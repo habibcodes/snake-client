@@ -52,8 +52,6 @@ const handleUserInput = (key) => {
     }, 0);
     conn.write("Move: down");
   }
-
-  console.log(connect);
 };
 
 stdin.on('data', handleUserInput);
