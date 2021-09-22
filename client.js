@@ -16,7 +16,10 @@ const connect = function() {
   // when connected to server, do following
   conn.on('connect', ()  => {
     //code that does something when the connection is first established
-    console.log('Connection established with server.');
+    console.log('Successfully connected to game server.');
+
+    //send name initials
+    conn.write('Name: AoE');
 
     //pass data to server from here
     //put live commands here
