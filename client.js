@@ -21,10 +21,16 @@ const connect = function() {
     //send name initials
     conn.write('Name: AoE');
 
+    //data to server
+    /* setTimeout(() => {
+      conn.write('Move: up');
+    }, 500); */
+
+    
     //pass data to server from here
     //put live commands here
 
-  });
+    
   // catches incoming data from server
   conn.on('data', (data) => {
     //
