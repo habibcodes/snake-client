@@ -1,4 +1,3 @@
-const { on } = require("events");
 const net = require("net");
 
 // establishes a connection with the game server
@@ -22,27 +21,20 @@ const connect = function() {
     conn.write('Name: AoE');
 
     //data to server
-    /* setTimeout(() => {
-      conn.write('Move: up');
-    }, 500); */
+        
+    // catches incoming data from server
+    conn.on('data', (data) => {
+      //
+      console.log(`Recieved data from server: ${data}`);
+    });
 
-    
-    //pass data to server from here
-    //put live commands here
+    // close connection to server
+    conn.on('close', () => {
+      //
+      console.log('Server closed connection');
+    });
 
-    
-  // catches incoming data from server
-  conn.on('data', (data) => {
-    //
-    console.log(`Recieved data from server: ${data}`);
   });
-
-  // close connection to server
-  conn.on('close', () => {
-    //
-    console.log('Server closed connection');
-  });
-
   return conn;
 };
 
