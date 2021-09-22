@@ -1,11 +1,12 @@
 const net = require("net");
+const { IP, PORT } = require("./constants");
 
 // establishes a connection with the game server
 const connect = function() {
   // connect to server for Snake
   const conn = net.createConnection({
-    host: '135.23.223.133',// IP address here,
-    port: 50542// PORT number here,
+    host: IP,// IP address here,
+    port: PORT,// PORT number here,
   });
 
   // interpret incoming data as text
@@ -28,18 +29,17 @@ const connect = function() {
       console.log(`Recieved data from server: ${data}`);
     });
 
+    
+    // end event handler
+    conn.on('end', () => {
+      console.log('Game over!');
+    });
+    
     // close connection to server
     conn.on('close', () => {
       //
       console.log('Server closed connection');
-
-      //
-      conn.end();
-    });
-
-    // end event handler
-    conn.on('end', () => {
-      console.log('Game over!');
+      process.exit();
     });
 
   });

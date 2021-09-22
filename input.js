@@ -9,7 +9,7 @@ const handleUserInput = (key) => {
   // mvmnt command catcher
   if (key === 't') {
     // stdin.setRawMode = (false);
-    let msg = 'bowbowbowwwww';
+    let msg = 'I need gold!';
     connection.write(`Say: ${msg}`);
   }
   if (key === 'w') {
