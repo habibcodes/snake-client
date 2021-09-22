@@ -1,6 +1,30 @@
+const {connect} = require('./client');
+const {stdin} = require('process');
+// const stdin = setupInput();
 let connection;
 
+// user input data handler
 const handleUserInput = (key) => {
+  console.log(`Key pressed: ${key}`);
+  // mvmnt command catcher
+  if (key === 't') {
+    // stdin.setRawMode = (false);
+    let msg = 'bowbowbowwwww';
+    connection.write(`Say: ${msg}`);
+  }
+  if (key === 'w') {
+    connection.write("Move: up");
+  }
+  if (key === 'a') {
+    connection.write("Move: left");
+  }
+  if (key === 'd') {
+    connection.write("Move: right");
+  }
+  if (key === 's') {
+    connection.write("Move: down");
+  }
+
   // exit code
   console.log(key);
   if (key === '\u0003') {
@@ -19,4 +43,7 @@ const setupInput = function(conn) {
   stdin.on("data", handleUserInput);
   return stdin;
 };
-module.exports = setupInput;
+
+module.exports = {
+  setupInput,
+};

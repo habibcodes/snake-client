@@ -32,13 +32,21 @@ const connect = function() {
     conn.on('close', () => {
       //
       console.log('Server closed connection');
+
+      //
+      conn.end();
+    });
+
+    // end event handler
+    conn.on('end', () => {
+      console.log('Game over!');
     });
 
   });
   return conn;
 };
 
-console.log("Connecting ...");
+// console.log("Connecting ...");
 
 
 module.exports = {
